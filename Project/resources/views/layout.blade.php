@@ -95,9 +95,9 @@ div.content {
 
             <div class="col-md-09">
                 
-                    <div class="content">
+                   
                            @yield('contnet')
-                    </div>
+                    
             </div>
 
 
