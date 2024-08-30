@@ -13,9 +13,13 @@ use App\Http\Controllers\StudentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('layout');
 });
 
-Route::resource('/students',StudentController::class);
+Route::resource('/students', StudentController::class);
+
+
+ ?>
+
+ 
