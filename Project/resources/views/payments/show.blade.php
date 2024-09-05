@@ -3,7 +3,7 @@
  
  
 <div class="card">
-  <div class="card-header">Batches Page</div>
+  <div class="card-header">Payment Page</div>
   <div class="card-body">
    
  

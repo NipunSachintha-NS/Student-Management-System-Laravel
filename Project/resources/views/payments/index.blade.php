@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h2>Batch Application</h2>
+            <h2>Payment Application</h2>
         </div>
         <div class="card-body">
             <a href="{{ url('/batches/create') }}" class="btn btn-success btn-sm" title="Add New Batch">
@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($batches as $item)
+                        @foreach ($payments as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->name }}</td>

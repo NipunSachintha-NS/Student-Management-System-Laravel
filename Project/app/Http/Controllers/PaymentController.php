@@ -10,15 +10,15 @@ use App\Models\Payment;
 use Illuminate\View\View;
 
 
-class BatchController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $batches = Payment::all();
-        return view('batches.index')->with('batches', $batches);
+        $payments = Payment::all();
+        return view('payments.index')->with('payments', $payments);
     }
 
     /**
