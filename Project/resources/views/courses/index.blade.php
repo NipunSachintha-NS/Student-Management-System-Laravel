@@ -16,7 +16,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Coures</th>
+                            <th>Course</th>
                             <th>Duration</th>
                             <th>Actions</th>
                         </tr>

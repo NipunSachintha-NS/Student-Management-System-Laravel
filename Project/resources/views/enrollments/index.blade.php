@@ -8,19 +8,19 @@
             <a href="{{ url('/enrollments/create') }}" class="btn btn-success btn-sm" title="Add New Enrollment">
                 <i class="fa fa-plus" aria-hidden="true"></i> Add New
             </a>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Enroll NO</th>
+                            <th>Enroll No</th>
                             <th>Batch</th>
                             <th>Student</th>
                             <th>Join Date</th>
                             <th>Fee</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

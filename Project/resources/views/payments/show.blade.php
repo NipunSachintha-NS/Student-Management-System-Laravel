@@ -3,18 +3,11 @@
  
  
 <div class="card">
-  <div class="card-header">Payment Page</div>
+  <div class="card-header">Payment Details</div>
   <div class="card-body">
-   
- 
-        <div class="card-body">
-        <h5 class="card-title">Name : {{ $batches->name }}</h5>
-        <p class="card-text">Course : {{ $batches->course->name }}</p>
-        <p class="card-text">Start Date : {{ $batches->start_date }}</p>
-  </div>
-       
-    </hr>
-  
+      <h5 class="card-title">Enrollment No: {{ $payment->enrollment->enroll_no ?? 'N/A' }}</h5>
+      <p class="card-text">Paid Date: {{ $payment->paid_date }}</p>
+      <p class="card-text">Amount: {{ $payment->amount }}</p>
   </div>
 </div>
 

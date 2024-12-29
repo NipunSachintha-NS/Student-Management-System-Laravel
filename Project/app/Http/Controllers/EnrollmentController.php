@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use App\Models\Enrollment;
+use App\Models\Batch;
+use App\Models\Student;
 use Illuminate\View\View;
-
 
 class EnrollmentController extends Controller
 {
@@ -17,7 +18,7 @@ class EnrollmentController extends Controller
     public function index(): View
     {
         $enrollments = Enrollment::all();
-        return view('enrollments.index')->with('enrollments', $enrollments);
+        return view ('enrollments.index')->with('enrollments',$enrollments);
     }
 
     /**
@@ -25,7 +26,9 @@ class EnrollmentController extends Controller
      */
     public function create(): View
     {
-        return view('enrollments.create');
+        $batches = Batch::pluck('name','id');
+        $students = Student::pluck('name','id');
+        return view('enrollments.create', compact('batches','students'));
     }
 
     /**
@@ -35,7 +38,7 @@ class EnrollmentController extends Controller
     {
         $input = $request->all();
         Enrollment::create($input);
-        return redirect('enrollments')->with('flash_message', 'Enrollment Addedd!');  
+        return redirect('enrollments')->with('flash_message', 'Enrollment Addedd!');
     }
 
     /**
@@ -43,8 +46,8 @@ class EnrollmentController extends Controller
      */
     public function show(string $id): View
     {
-        $enrollment = Enrollment::find($id);
-        return view('enrollments.show')->with('enrollments', $enrollment);
+        $enrollments = Enrollment::find($id);
+        return view('enrollments.show')->with('enrollments', $enrollments);
     }
 
     /**
@@ -52,8 +55,8 @@ class EnrollmentController extends Controller
      */
     public function edit(string $id): View
     {
-        $enrollment = Enrollment::find($id);
-        return view('enrollments.edit')->with('enrollments', $enrollment);
+        $enrollments = Enrollment::find($id);
+        return view('enrollments.edit')->with('enrollments', $enrollments);
     }
 
     /**
@@ -61,20 +64,17 @@ class EnrollmentController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        $enrollment = Enrollment::find($id);
+        $enrollments = Enrollment::find($id);
         $input = $request->all();
-        $enrollment->update($input);
-        return redirect('enrollments')->with('flash_message', 'Enrollment Updated!'); 
+        $enrollments->update($input);
+        return redirect('enrollments')->with('flash_message', 'Enrollment Updated!');  
     }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
     {
         Enrollment::destroy($id);
-        return redirect('enrollments')->with('flash_message', 'Enrollment deleted!');
+        return redirect('enrollments')->with('flash_message', 'Enrollment deleted!'); 
     }
 }
-
-?>

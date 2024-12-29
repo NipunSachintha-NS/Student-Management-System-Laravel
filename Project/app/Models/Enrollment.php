@@ -8,18 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Enrollment extends Model
 {
     protected $table = 'enrollments';
-    protected $primarykey = 'id';
-    protected $fillable = ['enroll_no', 'batch_id', 'student_id', 'join_date', 'fee'];
+    protected $primaryKey = 'id';
+    protected $fillable = ['enroll_no','batch_id','student_id','join_date','fee'];
+    
     use HasFactory;
-
-    public function student()
-    {
-        return $this->belongsTo(Student::class);
-    }
 
     public function batch()
     {
         return $this->belongsTo(Batch::class);
-    }
-}
+    } 
 
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    } 
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+ }

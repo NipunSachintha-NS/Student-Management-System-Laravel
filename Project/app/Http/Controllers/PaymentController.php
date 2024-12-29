@@ -5,27 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use App\Models\Enrollment;
 use App\Models\Payment;
+use App\Models\Enrollment;
 use Illuminate\View\View;
-
 
 class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        $payments = Payment::all();
+        $payments = Payment::with('enrollment')->get();
         return view('payments.index')->with('payments', $payments);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
-    {   
+    public function create()
+    {
         $enrollments = Enrollment::pluck('enroll_no','id');
         return view('payments.create', compact('enrollments'));
     }
@@ -45,8 +44,8 @@ class PaymentController extends Controller
      */
     public function show(string $id)
     {
-        $payments = Payment::find($id);
-        return view('payments.show')->with('payments', $payments);
+        $payment = Payment::with('enrollment')->find($id);
+        return view('payments.show', compact('payment'));
     }
 
     /**
@@ -54,9 +53,9 @@ class PaymentController extends Controller
      */
     public function edit(string $id)
     {
-        $payments = Payment::find($id);
-        $enrollments = Enrollment::pluck('enroll_no','id');
-        return view('payments.edit')->with('payments', 'enrollments');
+        $payment = Payment::find($id);
+        $enrollments = Enrollment::pluck('enroll_no', 'id');
+        return view('payments.edit', compact('payment', 'enrollments'));
     }
 
     /**
@@ -79,5 +78,3 @@ class PaymentController extends Controller
         return redirect('payments')->with('flash_message', 'Payment deleted!'); 
     }
 }
-
-?>
